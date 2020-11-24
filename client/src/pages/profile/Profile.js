@@ -162,7 +162,9 @@ function Profile() {
 
       <div className="profile_page">
         <div className="col-left">
-          <h2>{isAdmin ? "Admin Profile" : "User Profile"}</h2>
+          <h2 style={{ color: "blanchedalmond" }}>
+            {isAdmin ? "Admin Profile" : "User Profile"}
+          </h2>
 
           <div className="avatar">
             <img src={avatar ? avatar : user.avatar} alt="" />
@@ -244,7 +246,9 @@ function Profile() {
         </div>
 
         <div className="col-right">
-          <h2>{isAdmin ? "Users" : "My Orders"}</h2>
+          <h2 style={{ color: "blanchedalmond" }}>
+            {isAdmin ? "Users" : "My Orders"}
+          </h2>
 
           <div style={{ overflowX: "auto" }}>
             <table className="customers">

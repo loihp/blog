@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { showErrMsg, showSuccessMsg } from "../utils/notification/Notification";
 import { isMatch, isLength } from "../utils/validation/Validation";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const initialState = {
   password: "",
   cf_password: "",
@@ -25,8 +26,10 @@ function ResetPassword() {
         err: "Password must be at least 6 characters.",
         success: "",
       });
+
     if (!isMatch(password, cf_password))
-      return setData({ ...data, err: "Password did not match", success: "" });
+      return setData({ ...data, err: "Password did not match.", success: "" });
+
     try {
       const res = await axios.post(
         "/user/reset",
@@ -35,6 +38,7 @@ function ResetPassword() {
           headers: { Authorization: token },
         }
       );
+
       return setData({ ...data, err: "", success: res.data.msg });
     } catch (err) {
       err.response.data.msg &&
@@ -58,7 +62,7 @@ function ResetPassword() {
           />
           <label htmlFor="cf_password">Confirm Password</label>
           <input
-            type="cf_password"
+            type="password"
             name="cf_password"
             id="cf_password"
             value={cf_password}
@@ -67,6 +71,10 @@ function ResetPassword() {
           <button className="submit" onClick={handleResetPass}>
             Reset Password
           </button>
+          <Link to="/login">
+            {" "}
+            <button style={{ marginLeft: "15px" }}>Back Login</button>{" "}
+          </Link>
         </div>
       </div>
     </div>

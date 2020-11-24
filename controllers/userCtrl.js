@@ -162,16 +162,17 @@ const userCtrl = {
   updateUser: async (req, res) => {
     try {
       const { name, avatar } = req.body;
-      await Users.findByIdAndUpdate(
+      await Users.findOneAndUpdate(
         { _id: req.user.id },
         {
           name,
           avatar,
         }
       );
+
       res.json({ msg: "Update Success!" });
     } catch (err) {
-      return res.status(500).json({ msg: err.messages });
+      return res.status(500).json({ msg: err.message });
     }
   },
   updateAllUsersRole: async (req, res) => {

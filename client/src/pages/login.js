@@ -115,7 +115,7 @@ export default function Login() {
           <div className="fill">
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               id="password"
               onChange={handleChangeInput}
               value={password}

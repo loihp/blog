@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { isEmail } from "../utils/validation/Validation";
 import { showErrMsg, showSuccessMsg } from "../utils/notification/Notification";
+import { Link } from "react-router-dom";
 const initialState = {
   email: "",
   err: "",
@@ -44,6 +45,10 @@ function ForgotPassword() {
           <button className="submit" onClick={forgotPassword}>
             Verify your email
           </button>
+          <Link to="/login">
+            {" "}
+            <button style={{ marginLeft: "15px" }}>login again ?</button>{" "}
+          </Link>
         </div>
       </div>
     </div>

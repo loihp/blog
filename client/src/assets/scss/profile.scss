@@ -2,10 +2,9 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
-    
+    margin-top: 100px;
 
-   
+    color: white;
     
     .col-left{
         max-width: 400px;
@@ -86,6 +85,7 @@
             outline: none;
             background: #fee;
             padding: 0 5px;
+            color: black;
         }
 
         button{
@@ -133,7 +133,7 @@
     }
 
     tr:nth-child(even){
-        background: #f2f2f2;
+        background: linear-gradient(45deg, black, transparent);
     }
     i{
         cursor: pointer;

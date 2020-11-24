@@ -27,54 +27,40 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEmpty(name) || isEmpty(password)) {
+    if (isEmpty(name) || isEmpty(password))
       return setUser({
         ...user,
         err: "Please fill in all fields.",
         success: "",
       });
-    }
-    if (!isEmail(email)) {
+
+    if (!isEmail(email))
+      return setUser({ ...user, err: "Invalid emails.", success: "" });
+
+    if (isLength(password))
       return setUser({
         ...user,
-        err: "Invalid emails.",
+        err: "Password must be at least 6 characters.",
         success: "",
       });
-    }
-    if (!isLength(password)) {
-      return setUser({
-        ...user,
-        err: "Password must be at least 6 characters",
-        success: "",
-      });
-    }
-    if (!isMatch(password, cf_password)) {
-      return setUser({
-        ...user,
-        err: "Password did not match.",
-        success: "",
-      });
-    }
+
+    if (!isMatch(password, cf_password))
+      return setUser({ ...user, err: "Password did not match.", success: "" });
+
     try {
       const res = await axios.post("/user/register", {
         name,
         email,
         password,
       });
-      setUser({
-        ...user,
-        err: " ",
-        success: res.data.msg,
-      });
+
+      setUser({ ...user, err: "", success: res.data.msg });
     } catch (err) {
       err.response.data.msg &&
-        setUser({
-          ...user,
-          err: err.response.data.msg,
-          success: "",
-        });
+        setUser({ ...user, err: err.response.data.msg, success: "" });
     }
   };
+
   return (
     <div className="container">
       <div className="container login">
@@ -112,7 +98,7 @@ export default function Register() {
           <div className="fill">
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               id="password"
               onChange={handleChangeInput}
               value={password}
@@ -122,7 +108,7 @@ export default function Register() {
           <div className="fill">
             <label htmlFor="cf_password">Confirm Password</label>
             <input
-              type="text"
+              type="password"
               id="cf_password"
               onChange={handleChangeInput}
               value={cf_password}
