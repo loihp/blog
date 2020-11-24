@@ -1,0 +1,22 @@
+Front end (client)
+
+
+
+
+Back end (server)
+1)install all package necessary
+2)create file server 
+    2.1: call variable of package
+    2.2: test port
+        2.2.1: if have nodemon , need modify file package where dev to nodemon 
+    2.3: connect db
+        2.3.1: organize folder follow to MVC 
+        2.3.2: create folder controller, middleware, models
+        2.3.3: connect db on file dotenv : + create variable contains URL of MONGODB...
+        2.3.4: create Schema user on models folder 
+        2.3.5: create method router post to take data on register on routes
+        2.3.6:crate file userCtrl to test register on controller 
+
+
+
+fix nodemon crash : pkill -f node
